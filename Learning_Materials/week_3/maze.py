@@ -7,6 +7,8 @@ from time import sleep
 import numpy as np
 from IPython.display import clear_output
 from matplotlib import pyplot as plt
+from typing import Tuple
+
 from problem import Problem
 
 
@@ -23,6 +25,7 @@ class Maze(Problem):
         mazefile(str)
            name of the file holding the maze definition
         """
+        super().__init__()
         self.numdecisions: int = -1  # not fixed, one or more moves
         self.contents: list = []
         self.width: int = 0
@@ -31,6 +34,7 @@ class Maze(Problem):
         self.goal: int = 0
 
         self.value_set = self.setup(mazefile)
+        print(self.value_set)
 
     def setup(self, mazefile: str = "", start: tuple = (0, 0), end: tuple = (10, 10)):
         """Load a maze from a given filename.
@@ -170,7 +174,7 @@ class Maze(Problem):
         """
         self.goal = y + self.last_column_id * x
 
-    def cellid_to_coords(self, cellid: int) -> tuple[int, int]:
+    def cellid_to_coords(self, cellid: int) -> Tuple[int, int]:
         """Converts an index back to coordinates.
 
         Parameters
@@ -213,7 +217,7 @@ class Maze(Problem):
         x, y = self.cellid_to_coords(cellid)
         self.contents[x][y] = colour
 
-    def evaluate(self, solution: list) -> tuple[int, str]:
+    def evaluate(self, solution: list) -> Tuple[int, str]:
         """
         Method to give feedback on the value of a candidate solution.
 
