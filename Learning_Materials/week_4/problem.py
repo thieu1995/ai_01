@@ -2,6 +2,8 @@
 author:james.smith@uwe.ac.uk 2023.
 """
 
+from typing import Tuple
+
 
 class Problem:
     """Generic super class we will use for problems."""
@@ -10,7 +12,7 @@ class Problem:
         self.numdecisions: int = -1
         self.value_set: list = []
 
-    def evaluate(self, solution: list) -> tuple[int, str]:
+    def evaluate(self, solution: list) -> Tuple[int, str]:
         """Evaluate function.
 
         Parameters

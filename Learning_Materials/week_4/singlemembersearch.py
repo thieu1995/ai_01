@@ -22,8 +22,6 @@ from problem import Problem
 BIGNUM = 10000000
 
 
-
-
 class SingleMemberSearch:
     """Common framework for single member search on graphs.
     Attributes not definied in init method:
@@ -35,12 +33,12 @@ class SingleMemberSearch:
     """
 
     def __init__(
-        self,
-        problem: Problem,
-        constructive: bool = False,
-        max_attempts: int = 50,
-        minimise=True,
-        target_quality=1,
+            self,
+            problem: Problem,
+            constructive: bool = False,
+            max_attempts: int = 50,
+            minimise=True,
+            target_quality=1,
     ):
         """Constructor for search algorithm in a given problem.
         starts a search with an empty solution on the open list.
@@ -64,10 +62,10 @@ class SingleMemberSearch:
         self.constructive: bool = constructive
         self.max_attempts: int = max_attempts
         self.minimise: bool = minimise
-        self.target_quality= target_quality
+        self.target_quality = target_quality
 
         # Implementation specific storage
-        self.runlog:str = ""  # any messages we want to store"
+        self.runlog: str = ""  # any messages we want to store"
         self.trials = 0  # number of attempts so far
         self.solved = False  # have we resched the goal?
         self.best_so_far = BIGNUM
@@ -84,7 +82,7 @@ class SingleMemberSearch:
         if constructive:
             working_candidate.variable_values = []
         else:
-            firstval = problem.value_set[0]   # use first valid value in every pos
+            firstval = problem.value_set[0]  # use first valid value in every pos
             working_candidate.variable_values = [firstval] * problem.numdecisions
 
         #  === Pseudocode:  Test ( working_candidate)  ======      Problem-specific code
@@ -108,12 +106,9 @@ class SingleMemberSearch:
         #  === Pseudocode:  AppendToOpenList(working_candidate)
         self.open_list.append(working_candidate)
 
-
     def __str__(self) -> str:
         """   Returns name of algorithm  """
         return "not set"
-
-
 
     # ============= this function defines which algorithm is being used ================
     def select_and_move_from_openlist(self) -> CandidateSolution:
@@ -132,7 +127,6 @@ class SingleMemberSearch:
         )
         assert self.__str__() == "not set", errmsg
         return dummy
-
 
     # =========== the main search loop ======================================
     def run_search(self) -> bool:
@@ -226,9 +220,8 @@ class SingleMemberSearch:
             )
             self.open_list.append(neighbour)
 
+    # =========== Helper functions  ====================
 
-# =========== Helper functions  ====================            
-   
     def a_better_than_b(self, a: int, b: int) -> bool:
         """ Compares two solutions taking into account whether we are minimising."""
         better: bool = False
