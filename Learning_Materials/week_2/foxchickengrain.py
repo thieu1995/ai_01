@@ -3,6 +3,7 @@ Class: FoxChickenGrain(Problem).
 
 Author: james.smith@uwe.ac.uk 2024
 """
+from typing import Tuple
 
 from problem import Problem
 
@@ -17,6 +18,7 @@ class FoxChickenGrain(Problem):
     """
 
     def __init__(self):
+        super().__init__()
         self.value_set = [0, 1, 2, 3, 4, 5, 6, 7]
         self.move_names = [
             "b_01",
@@ -30,7 +32,7 @@ class FoxChickenGrain(Problem):
         ]
         self.numdecisions: int = -1  # not fixed, one or more moves
 
-    def evaluate(self, attempt: list) -> tuple[int, str]:
+    def evaluate(self, attempt: list) -> Tuple[int, str]:
         """
         Runs through the moves stopping as soon as there is a problem.
 
@@ -89,7 +91,7 @@ class FoxChickenGrain(Problem):
             movelist = movelist + "->" + self.move_names[move]
         return movelist
 
-    def things_in_right_place(self, locations: dict, move: int) -> tuple[bool, str]:
+    def things_in_right_place(self, locations: dict, move: int) -> Tuple[bool, str]:
         """
         Checks whether things are in the right place for the proposed move.
 

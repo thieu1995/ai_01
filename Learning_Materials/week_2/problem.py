@@ -1,6 +1,7 @@
 """Python implementation of superclass for problems
 author:james.smith@uwe.ac.uk 2023.
 """
+from typing import Tuple
 
 
 class Problem:
@@ -10,7 +11,7 @@ class Problem:
         self.numdecisions: int = -1
         self.value_set: list = []
 
-    def evaluate(self, solution: list) -> tuple[int, str]:
+    def evaluate(self, solution: list) -> Tuple[int, str]:
         """Evaluate function.
 
         Parameters

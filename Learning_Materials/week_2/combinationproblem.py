@@ -1,4 +1,5 @@
 import random
+from typing import Tuple
 
 
 class CombinationProblem:
@@ -23,7 +24,7 @@ class CombinationProblem:
         # use random.choices to create a list holding the combination to be guessed
         self.answer = random.choices(self.value_set, k=self.numdecisions)
 
-    def evaluate(self, attempt: list) -> tuple[int, str]:
+    def evaluate(self, attempt: list) -> Tuple[int, str]:
         """Tests whether a provided attempt matches the combination."""
 
         try:  # use try ...except with assertions to make our code more robust
